@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c25m6sxsnri8n"]
+
+[ext_resource type="Script" uid="uid://cpx11jh67whr4" path="res://scenes/blocks/events/when_start_clicked.gd" id="1_o4kjq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4kjq"]
+bg_color = Color(1, 0.7490196, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74509805, 0.5568628, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uurfc"]
+content_margin_left = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="go_to" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 325.0
+offset_bottom = 50.0
+script = ExtResource("1_o4kjq")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o4kjq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="title" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uurfc")
+text = "When Program Started"

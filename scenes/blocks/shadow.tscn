@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsyvrwr45pbpn"]
+
+[ext_resource type="Script" uid="uid://dhwf53hixeafh" path="res://scenes/blocks/motion/go_to.gd" id="1_wmlgf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ym50"]
+bg_color = Color(0.5686275, 0.59607846, 0.6627451, 0.27058825)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="go_to" type="Control"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 325.0
+offset_bottom = 50.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_wmlgf")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ym50")

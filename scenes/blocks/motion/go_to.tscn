@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvuef0aj7qfju"]
+
+[ext_resource type="Script" uid="uid://dhwf53hixeafh" path="res://scenes/blocks/motion/go_to.gd" id="1_uurfc"]
+[ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="2_1rt4f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g5si"]
+bg_color = Color(0.29803923, 0.5921569, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.13725491, 0.5176471, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uurfc"]
+content_margin_left = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rt4f"]
+bg_color = Color(0.86898494, 0.86898494, 0.8689847, 1)
+border_color = Color(0, 0.32630154, 0.6926632, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_caj8l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="go_to" type="Control"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 325.0
+offset_bottom = 50.0
+script = ExtResource("1_uurfc")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0g5si")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uurfc")
+text = "go to x:"
+
+[node name="INP" type="Panel" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(45, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rt4f")
+
+[node name="LineEdit" type="LineEdit" parent="Panel/HBoxContainer/INP"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0625
+offset_top = -25.0
+offset_right = 38.0625
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1rt4f")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_caj8l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_caj8l")
+alignment = 1
+expand_to_text_length = true
+
+[node name="parameter" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uurfc")
+text = "y:"
+
+[node name="INP2" type="Panel" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(45, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rt4f")
+
+[node name="LineEdit2" type="LineEdit" parent="Panel/HBoxContainer/INP2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0625
+offset_top = -25.0
+offset_right = 38.0625
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1rt4f")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_caj8l")
+theme_override_styles/focus = SubResource("StyleBoxFlat_caj8l")
+alignment = 1
+expand_to_text_length = true

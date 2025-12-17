@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbs62m3hr166o"]
+
+[ext_resource type="Script" uid="uid://w7onmpb2bwae" path="res://scenes/blocks/looks/show.gd" id="1_v6bhb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6bhb"]
+bg_color = Color(0.6, 0.4, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5411765, 0.21960784, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uurfc"]
+content_margin_left = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="go_to" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 325.0
+offset_bottom = 50.0
+script = ExtResource("1_v6bhb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v6bhb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="title" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_uurfc")
+text = "show"
+horizontal_alignment = 1

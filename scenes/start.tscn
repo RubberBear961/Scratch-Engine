@@ -1,0 +1,448 @@
+[gd_scene load_steps=24 format=3 uid="uid://c0kdl62b163b5"]
+
+[ext_resource type="Script" uid="uid://tvypodifj8j6" path="res://scenes/start.gd" id="1_0auqf"]
+[ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="1_jaeev"]
+[ext_resource type="StyleBox" uid="uid://bbs8eqqp7fpod" path="res://assets/styles/popular_button_Normal.tres" id="2_kdmts"]
+[ext_resource type="StyleBox" uid="uid://bmbmwoeu2fv60" path="res://assets/styles/popular_button_Pressed.tres" id="3_0auqf"]
+[ext_resource type="StyleBox" uid="uid://cf4c14yxoc2km" path="res://assets/styles/popular_button_Hover.tres" id="4_y16t7"]
+[ext_resource type="Script" uid="uid://c0onc2c5i17sv" path="res://scenes/window.gd" id="6_4ge6i"]
+[ext_resource type="StyleBox" uid="uid://dsfljp26cjs6t" path="res://assets/styles/preset_focus.tres" id="7_8itgj"]
+[ext_resource type="StyleBox" uid="uid://cfltlnbruby1f" path="res://assets/styles/preset_normal.tres" id="7_tn317"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewcy1"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdmts"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0auqf"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgjjs"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nvso"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y16t7"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8uic"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1pfr"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ge6i"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itgj"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tn317"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8nf6"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsp51"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0tym"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jfef"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0auqf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 63.03)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ewcy1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Create New" type="Button" parent="VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = ExtResource("2_kdmts")
+theme_override_styles/pressed = ExtResource("3_0auqf")
+theme_override_styles/hover = ExtResource("4_y16t7")
+text = "Create New"
+
+[node name="Open" type="Button" parent="VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = ExtResource("2_kdmts")
+theme_override_styles/pressed = ExtResource("3_0auqf")
+theme_override_styles/hover = ExtResource("4_y16t7")
+text = "Open"
+
+[node name="ProjectsTab" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdmts")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ProjectsTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ProjectsTab/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/ProjectsTab/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+alignment = 1
+
+[node name="Create new" type="Window" parent="."]
+oversampling_override = 1.0
+title = "Create new Project"
+initial_position = 4
+size = Vector2i(400, 400)
+exclusive = true
+popup_window = true
+script = ExtResource("6_4ge6i")
+
+[node name="Control" type="Control" parent="Create new"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Create new/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0auqf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Create new/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Presets" type="VBoxContainer" parent="Create new/Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Create new/Control/Panel/VBoxContainer/Presets"]
+layout_mode = 2
+text = "Presets"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Create new/Control/Panel/VBoxContainer/Presets"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="2D" type="Button" parent="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("7_tn317")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pgjjs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1nvso")
+theme_override_styles/focus = ExtResource("7_8itgj")
+text = "2D"
+
+[node name="3D" type="Button" parent="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("7_tn317")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pgjjs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1nvso")
+theme_override_styles/focus = ExtResource("7_8itgj")
+text = "3D
+TPS"
+
+[node name="3D2" type="Button" parent="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("7_tn317")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pgjjs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1nvso")
+theme_override_styles/focus = ExtResource("7_8itgj")
+text = "3D
+FPS"
+
+[node name="Project Name" type="HBoxContainer" parent="Create new/Control/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Create new/Control/Panel/VBoxContainer/Project Name"]
+layout_mode = 2
+text = "Project Name: "
+
+[node name="LineEdit" type="LineEdit" parent="Create new/Control/Panel/VBoxContainer/Project Name"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_y16t7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r8uic")
+
+[node name="Project Path" type="HBoxContainer" parent="Create new/Control/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Create new/Control/Panel/VBoxContainer/Project Path"]
+layout_mode = 2
+text = "Project Path: "
+
+[node name="LineEdit" type="LineEdit" parent="Create new/Control/Panel/VBoxContainer/Project Path"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_y16t7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_x1pfr")
+
+[node name="Git Integration" type="HBoxContainer" parent="Create new/Control/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Create new/Control/Panel/VBoxContainer/Git Integration"]
+layout_mode = 2
+text = "Git Integration:"
+
+[node name="LineEdit" type="LineEdit" parent="Create new/Control/Panel/VBoxContainer/Git Integration"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_y16t7")
+
+[node name="OptionButton" type="OptionButton" parent="Create new/Control/Panel/VBoxContainer/Git Integration"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4ge6i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8itgj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tn317")
+selected = 0
+item_count = 2
+popup/item_0/text = "NONE"
+popup/item_0/id = 0
+popup/item_1/text = "github"
+popup/item_1/id = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Create new/Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Create" type="Button" parent="Create new/Control/Panel/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(264.575, 36.9)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_m8nf6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gsp51")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n0tym")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8jfef")
+text = "Create"
+
+[connection signal="pressed" from="VBoxContainer/Panel/HBoxContainer/Create New" to="." method="_on_create_new_pressed"]
+[connection signal="close_requested" from="Create new" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer/2D" to="Create new" method="_on_d_pressed"]
+[connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer/3D" to="Create new" method="_on_3d_pressed"]
+[connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer/3D2" to="Create new" method="_on_d_3D_FPS_pressed"]

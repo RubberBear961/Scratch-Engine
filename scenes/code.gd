@@ -291,6 +291,9 @@ func _process(delta: float) -> void:
 				continue
 			if b == dragging_block or b == shadow_cast:
 				continue
+			if not Connections.has(b.name):
+				continue
+
 			
 			var b_rect = Rect2(b.get_child(0).global_position, b.get_child(0).size*0.7)
 			var mouse_pos = get_global_mouse_position()

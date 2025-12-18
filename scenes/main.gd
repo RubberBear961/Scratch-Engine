@@ -19,7 +19,8 @@ func color_list_positions():
 
 func _ready() -> void:
 	$"GUI/Main Categories/ViewPorts/2D".add_theme_stylebox_override("normal", active)
-	color_list_positions()
+	$"GUI/Settings etc/HBoxContainer/File".get_popup().id_pressed.connect(_on_menu_button_pressed)
+	$"Project Settings".hide()
 
 func check_focus():
 	if Global.focus == "2D":
@@ -47,3 +48,15 @@ func _on_2d_pressed() -> void:
 
 func _on_code_pressed() -> void:
 	Global.focus = "CODE"
+	
+
+# Handling Main Options ====================================================================
+
+func _on_menu_button_pressed(id : int) -> void:
+	match id:
+		0: $"Project Settings".show()
+		1: $SaveManager.save_script()
+
+
+func _on_project_settings_close_requested() -> void:
+	$"Project Settings".hide()

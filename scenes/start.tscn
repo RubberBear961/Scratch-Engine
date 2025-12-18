@@ -328,6 +328,7 @@ oversampling_override = 1.0
 title = "Create new Project"
 initial_position = 4
 size = Vector2i(475, 400)
+visible = false
 transient = true
 exclusive = true
 script = ExtResource("6_4ge6i")

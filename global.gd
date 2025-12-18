@@ -1,3 +1,6 @@
 extends Node
 
 var focus = "2D"
+
+var current_working_project_name
+var current_working_project_path

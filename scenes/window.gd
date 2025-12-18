@@ -63,7 +63,7 @@ func create_workflow(path: String) -> bool:
 	return true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func create_slug(input: String) -> String:
@@ -173,16 +173,17 @@ func load_all_projects():
 
 	dir.list_dir_begin()
 	while true:
-		var name = dir.get_next()
-		if name == "":
+		var name_no_shadow = dir.get_next()
+		if name_no_shadow == "":
 			break
 
-		if dir.current_is_dir() and not name.begins_with("."):
-			var project = load_project(name)
+		if dir.current_is_dir() and not name_no_shadow.begins_with("."):
+			var project = load_project(name_no_shadow)
 			var project_icon = preload("res://scenes/project_icon.tscn")
 			var ready_project_icon = project_icon.instantiate()
-			ready_project_icon.project_name = name
+			ready_project_icon.project_name = name_no_shadow
 			ready_project_icon.project_icon = project.project_icon
+			ready_project_icon.project_path = project.project_path
 			$"../VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer".add_child(ready_project_icon)
 			
 	dir.list_dir_end()

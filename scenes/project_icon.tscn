@@ -190,3 +190,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xlk6v")
+
+[connection signal="pressed" from="Panel/VBoxContainer/Buttons/Edit" to="." method="_on_edit_pressed"]

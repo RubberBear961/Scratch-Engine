@@ -4,8 +4,6 @@ extends Control
 @onready var blocks_list = $HBoxContainer/DeadZones/Blocks/VBoxContainer
 @onready var shadow = preload("res://scenes/blocks/shadow.tscn")
 
-@onready var save_manager = $"../../../../SaveManager"
-
 var dragging_column = false
 
 var join_position

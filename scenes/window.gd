@@ -46,6 +46,19 @@ func create_workflow(path: String) -> bool:
 	file.store_string("[HEAD]")
 	file.close()
 	
+	var image_path = "res://assets/scratch_engine_logo.svg"
+	var dest_path = path.path_join("icon.svg")
+	
+	var dir = DirAccess.open(path)
+	
+	if dir.copy(image_path,dest_path) == OK:
+		print("[Fluppy] -> Copied project icon")
+	else:
+		print("[Fluppy] -> Couldn't copy project icon! This is not a fatal error!")
+	
+	create_project(current_create_project_name,current_create_project_path_with_name)
+	load_all_projects()
+	
 	print("[Fluppy] -> Project created successfully at: ", path)
 	return true
 
@@ -100,6 +113,7 @@ var current_create_project_git_integrity
 
 func _on_create_pressed() -> void:
 	create_workflow(current_create_project_path_with_name)
+	$".".hide()
 
 
 func _on_file_dialog_confirmed() -> void:
@@ -114,3 +128,61 @@ func _on_project_name_changed(new_text: String) -> void:
 	current_create_project_name = $"Control/Panel/VBoxContainer/Project Name/LineEdit".text
 	current_create_project_path_with_name = str(current_create_project_path) + str(create_slug(current_create_project_name))
 	$"Control/Panel/VBoxContainer/Project Path/LineEdit".text = current_create_project_path_with_name
+
+
+# Handling Multiple Projects ==============================================
+func load_project(project_name : String):
+	if not FileAccess.file_exists("user://projects/" + project_name + "/project.save"):
+		return
+
+	var file = FileAccess.open("user://projects/" + project_name + "/project.save", FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+	
+	var data_to_return : Dictionary = {
+		"project_name": data.project_name,
+		"project_path": data.project_path,
+		"project_icon": data.project_icon
+	}
+	
+	return data_to_return
+		
+func create_project(project_to_create_name, project_to_create_path):
+	var dir_path = "user://projects/" + project_to_create_name
+
+	DirAccess.make_dir_recursive_absolute(dir_path)
+
+	var file = FileAccess.open(dir_path + "/project.save", FileAccess.WRITE)
+	if file == null:
+		push_error("[Fluppy] -> couldn't create save file for project link. This shouldn't be treatened as a fatal error")
+		return
+
+	var Project: Dictionary = {
+		"project_name": project_to_create_name,
+		"project_path": project_to_create_path,
+		"project_icon": project_to_create_path + "/icon.svg"
+	}
+
+	file.store_string(JSON.stringify(Project))
+	file.close()
+
+func load_all_projects():
+	var dir = DirAccess.open("user://projects/")
+	if dir == null:
+		return
+
+	dir.list_dir_begin()
+	while true:
+		var name = dir.get_next()
+		if name == "":
+			break
+
+		if dir.current_is_dir() and not name.begins_with("."):
+			var project = load_project(name)
+			var project_icon = preload("res://scenes/project_icon.tscn")
+			var ready_project_icon = project_icon.instantiate()
+			ready_project_icon.project_name = name
+			ready_project_icon.project_icon = project.project_icon
+			$"../VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer".add_child(ready_project_icon)
+			
+	dir.list_dir_end()

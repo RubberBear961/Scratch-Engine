@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="106.25583"
+   height="148.11839"
+   viewBox="0 0 28.113521 39.189658"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="sprite.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   sodipodi:docname="script.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:lockguides="false">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="28.113522"
+       height="39.189659"
+       id="page1"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,5.1886771,0,1 @ F,0,1,1,0,5.1886771,0,1 @ F,0,1,1,0,5.1886771,0,1 @ F,0,0,1,0,3.8900521,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-19.668623,-14.668804)">
+    <path
+       id="rect1"
+       d="m 32.892391,14.668804 h 1.641957 c 7.316556,0 13.247797,5.931241 13.247797,13.247797 v 19.528797 c 0,2.865627 -1.968734,6.460829 -4.580959,6.376058 -0.88278,-0.02865 -1.804723,-0.113821 -2.681855,-0.261331 -2.710286,-0.455799 -6.630982,-1.93229 -9.113558,-0.80272 -0.222724,0.101339 -0.448569,0.201708 -0.676404,0.29943 -2.597453,1.114083 -7.753946,1.224854 -9.853451,-0.687013 -0.504684,-0.459589 -1.207295,-1.477382 -1.207295,-3.625798 V 27.892572 c 0,-7.303285 5.920483,-13.223768 13.223768,-13.223768 z"
+       style="fill:#ff9300;stroke-width:2.64583;stroke-linejoin:round"
+       sodipodi:nodetypes="ssscsscss"
+       inkscape:path-effect="#path-effect3"
+       inkscape:original-d="m 32.892391,14.668804 h 1.641957 c 7.316556,0 13.247797,5.931241 13.247797,13.247797 v 24.717474 c 1.081289,1.742077 -10.697829,1.827788 -11.672349,-1.380409 -0.437751,-1.441112 -6.639776,3.571667 -10.391101,2.843144 -7.624268,-1.480665 -3.88368,-3.31696 -6.050072,-1.462734 V 27.892572 c 0,-7.303285 5.920483,-13.223768 13.223768,-13.223768 z" />
+    <ellipse
+       style="fill:#f9f9f9;stroke-width:2.64583;stroke-linejoin:round"
+       id="path3"
+       cx="33.16291"
+       cy="27.308199"
+       rx="2.9167578"
+       ry="6.4281945" />
+    <ellipse
+       style="fill:#f9f9f9;stroke-width:2.64583;stroke-linejoin:round"
+       id="ellipse3"
+       cx="41.998138"
+       cy="27.308199"
+       rx="2.9167578"
+       ry="6.4281945" />
+    <path
+       style="fill:#000000;stroke-width:2.64583;stroke-linejoin:round"
+       id="path5"
+       sodipodi:type="arc"
+       sodipodi:cx="34.126316"
+       sodipodi:cy="27.732969"
+       sodipodi:rx="1.5008559"
+       sodipodi:ry="3.2848921"
+       sodipodi:start="0.1271963"
+       sodipodi:end="6.122173"
+       sodipodi:arc-type="slice"
+       d="m 35.615047,28.14967 a 1.5008559,3.2848921 0 0 1 -1.571452,2.863198 1.5008559,3.2848921 0 0 1 -1.41792,-3.22436 1.5008559,3.2848921 0 0 1 1.367301,-3.327441 1.5008559,3.2848921 0 0 1 1.614783,2.745277 l -1.481443,0.526625 z" />
+    <path
+       style="fill:#000000;stroke-width:2.64583;stroke-linejoin:round"
+       id="ellipse6"
+       sodipodi:type="arc"
+       sodipodi:cx="42.975117"
+       sodipodi:cy="27.732969"
+       sodipodi:rx="1.5008559"
+       sodipodi:ry="3.2848921"
+       sodipodi:start="0.087599092"
+       sodipodi:end="6.1518764"
+       sodipodi:arc-type="slice"
+       d="m 44.470218,28.020355 a 1.5008559,3.2848921 0 0 1 -1.544429,2.995732 1.5008559,3.2848921 0 0 1 -1.45117,-3.211332 1.5008559,3.2848921 0 0 1 1.385672,-3.34705 1.5008559,3.2848921 0 0 1 1.602761,2.845167 l -1.487935,0.430097 z" />
+  </g>
+</svg>

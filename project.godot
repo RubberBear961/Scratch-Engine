@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Scratch Engine"
-run/main_scene="uid://c0kdl62b163b5"
+run/main_scene="uid://clcjvegkmxp4q"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://b8v2t7gud1k75"
 

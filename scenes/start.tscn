@@ -1,14 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://c0kdl62b163b5"]
+[gd_scene load_steps=33 format=3 uid="uid://clcjvegkmxp4q"]
 
-[ext_resource type="Script" uid="uid://tvypodifj8j6" path="res://scenes/start.gd" id="1_0auqf"]
-[ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="1_jaeev"]
-[ext_resource type="StyleBox" uid="uid://bbs8eqqp7fpod" path="res://assets/styles/popular_button_Normal.tres" id="2_kdmts"]
-[ext_resource type="StyleBox" uid="uid://bmbmwoeu2fv60" path="res://assets/styles/popular_button_Pressed.tres" id="3_0auqf"]
-[ext_resource type="StyleBox" uid="uid://cf4c14yxoc2km" path="res://assets/styles/popular_button_Hover.tres" id="4_y16t7"]
-[ext_resource type="Script" uid="uid://c0onc2c5i17sv" path="res://scenes/window.gd" id="6_4ge6i"]
-[ext_resource type="Script" uid="uid://dy1jnkufxgs4j" path="res://scenes/load_projects.gd" id="6_tn317"]
-[ext_resource type="StyleBox" uid="uid://dsfljp26cjs6t" path="res://assets/styles/preset_focus.tres" id="7_8itgj"]
-[ext_resource type="StyleBox" uid="uid://cfltlnbruby1f" path="res://assets/styles/preset_normal.tres" id="7_tn317"]
+[ext_resource type="Script" uid="uid://tvypodifj8j6" path="res://scenes/start.gd" id="1_gophc"]
+[ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="2_p0nl4"]
+[ext_resource type="StyleBox" uid="uid://bbs8eqqp7fpod" path="res://assets/styles/popular_button_Normal.tres" id="3_da165"]
+[ext_resource type="StyleBox" uid="uid://bmbmwoeu2fv60" path="res://assets/styles/popular_button_Pressed.tres" id="4_r8ukj"]
+[ext_resource type="StyleBox" uid="uid://cf4c14yxoc2km" path="res://assets/styles/popular_button_Hover.tres" id="5_1colc"]
+[ext_resource type="Script" uid="uid://dy1jnkufxgs4j" path="res://scenes/load_projects.gd" id="6_hwiky"]
+[ext_resource type="Script" uid="uid://c0onc2c5i17sv" path="res://scenes/window.gd" id="7_mhwaj"]
+[ext_resource type="StyleBox" uid="uid://cfltlnbruby1f" path="res://assets/styles/preset_normal.tres" id="8_ve1km"]
+[ext_resource type="StyleBox" uid="uid://dsfljp26cjs6t" path="res://assets/styles/preset_focus.tres" id="9_3iev3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewcy1"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
@@ -236,6 +236,57 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp05y"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3i1d"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdrmf"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1pjr"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71xtm"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(0.25490198, 0.25490198, 0.25490198, 0.48235294)
+
 [node name="Start" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -243,7 +294,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0auqf")
+script = ExtResource("1_gophc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -274,11 +325,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_fonts/font = ExtResource("2_p0nl4")
 theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = ExtResource("2_kdmts")
-theme_override_styles/pressed = ExtResource("3_0auqf")
-theme_override_styles/hover = ExtResource("4_y16t7")
+theme_override_styles/normal = ExtResource("3_da165")
+theme_override_styles/pressed = ExtResource("4_r8ukj")
+theme_override_styles/hover = ExtResource("5_1colc")
 text = "Create New"
 
 [node name="Open" type="Button" parent="VBoxContainer/Panel/HBoxContainer"]
@@ -286,18 +337,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_fonts/font = ExtResource("2_p0nl4")
 theme_override_font_sizes/font_size = 21
-theme_override_styles/normal = ExtResource("2_kdmts")
-theme_override_styles/pressed = ExtResource("3_0auqf")
-theme_override_styles/hover = ExtResource("4_y16t7")
+theme_override_styles/normal = ExtResource("3_da165")
+theme_override_styles/pressed = ExtResource("4_r8ukj")
+theme_override_styles/hover = ExtResource("5_1colc")
 text = "Open"
 
 [node name="ProjectsTab" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kdmts")
-script = ExtResource("6_tn317")
+script = ExtResource("6_hwiky")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ProjectsTab"]
 layout_mode = 1
@@ -331,7 +382,7 @@ size = Vector2i(475, 400)
 visible = false
 transient = true
 exclusive = true
-script = ExtResource("6_4ge6i")
+script = ExtResource("7_mhwaj")
 
 [node name="Control" type="Control" parent="Create new"]
 layout_mode = 3
@@ -376,35 +427,35 @@ alignment = 1
 [node name="2D" type="Button" parent="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_fonts/font = ExtResource("2_p0nl4")
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = ExtResource("7_tn317")
+theme_override_styles/normal = ExtResource("8_ve1km")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pgjjs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1nvso")
-theme_override_styles/focus = ExtResource("7_8itgj")
+theme_override_styles/focus = ExtResource("9_3iev3")
 text = "2D"
 
 [node name="3D" type="Button" parent="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_fonts/font = ExtResource("2_p0nl4")
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = ExtResource("7_tn317")
+theme_override_styles/normal = ExtResource("8_ve1km")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pgjjs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1nvso")
-theme_override_styles/focus = ExtResource("7_8itgj")
+theme_override_styles/focus = ExtResource("9_3iev3")
 text = "3D
 TPS"
 
 [node name="3D2" type="Button" parent="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_fonts/font = ExtResource("2_p0nl4")
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = ExtResource("7_tn317")
+theme_override_styles/normal = ExtResource("8_ve1km")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pgjjs")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1nvso")
-theme_override_styles/focus = ExtResource("7_8itgj")
+theme_override_styles/focus = ExtResource("9_3iev3")
 text = "3D
 FPS"
 
@@ -447,7 +498,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_x1pfr")
 [node name="Button" type="Button" parent="Create new/Control/Panel/VBoxContainer/Project Path"]
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_fonts/font = ExtResource("2_p0nl4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qfvu4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_twuju")
 theme_override_styles/hover = SubResource("StyleBoxFlat_aox1m")
@@ -511,7 +562,135 @@ file_mode = 2
 access = 2
 show_hidden_files = true
 
+[node name="U sure?" type="Window" parent="."]
+oversampling_override = 1.0
+title = "Are you sure?"
+initial_position = 4
+size = Vector2i(920, 150)
+visible = false
+transient = true
+exclusive = true
+
+[node name="Panel" type="Panel" parent="U sure?"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="U sure?/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="U sure?/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Are you sure that your project name doesn't contain any special symbols, that may destroy your work?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="U sure?/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 43.27)
+layout_mode = 2
+alignment = 1
+
+[node name="Yes" type="Button" parent="U sure?/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_hp05y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g3i1d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdrmf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g3i1d")
+text = "Yes, continue"
+
+[node name="No" type="Button" parent="U sure?/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_hp05y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g3i1d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdrmf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g3i1d")
+text = "No, let me change the name"
+
+[node name="delete project?" type="Window" parent="."]
+oversampling_override = 1.0
+title = "Are you sure?"
+initial_position = 4
+size = Vector2i(920, 150)
+visible = false
+transient = true
+exclusive = true
+
+[node name="Panel" type="Panel" parent="delete project?"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="delete project?/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="delete project?/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Are you sure you want to DELETE this project?
+After this you will lose this project forever! [A very long time]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="delete project?/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 43.27)
+layout_mode = 2
+alignment = 1
+
+[node name="Yes" type="Button" parent="delete project?/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_hp05y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g3i1d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdrmf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g3i1d")
+text = "DELETE"
+
+[node name="No" type="Button" parent="delete project?/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_hp05y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g3i1d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cdrmf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g3i1d")
+text = "No, it was a misclick SAVE ME!"
+
+[node name="Delete Menu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+size = Vector2i(14, 8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_b1pjr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_71xtm")
+
+[node name="Delete Submenu" type="PopupMenu" parent="Delete Menu"]
+oversampling_override = 1.0
+size = Vector2i(233, 163)
+theme_override_styles/panel = SubResource("StyleBoxFlat_b1pjr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_71xtm")
+
 [connection signal="pressed" from="VBoxContainer/Panel/HBoxContainer/Create New" to="." method="_on_create_new_pressed"]
+[connection signal="gui_input" from="VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer" to="Create new" method="_on_flow_container_gui_input"]
 [connection signal="close_requested" from="Create new" to="." method="_on_window_close_requested"]
 [connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer/2D" to="Create new" method="_on_d_pressed"]
 [connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer/3D" to="Create new" method="_on_3d_pressed"]
@@ -520,3 +699,8 @@ show_hidden_files = true
 [connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Project Path/Button" to="Create new" method="_on_path_choose_pressed"]
 [connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Buttons/Create" to="Create new" method="_on_create_pressed"]
 [connection signal="confirmed" from="FileDialog" to="Create new" method="_on_file_dialog_confirmed"]
+[connection signal="pressed" from="U sure?/Panel/VBoxContainer/HBoxContainer/Yes" to="Create new" method="_on_yes_pressed"]
+[connection signal="pressed" from="U sure?/Panel/VBoxContainer/HBoxContainer/No" to="Create new" method="_on_no_pressed"]
+[connection signal="pressed" from="delete project?/Panel/VBoxContainer/HBoxContainer/Yes" to="Create new" method="_on_delete_yes_pressed"]
+[connection signal="pressed" from="delete project?/Panel/VBoxContainer/HBoxContainer/No" to="Create new" method="_on_delete_no_pressed"]
+[connection signal="id_pressed" from="Delete Menu/Delete Submenu" to="Create new" method="_on_delete_submenu_id_pressed"]

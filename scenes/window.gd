@@ -2,14 +2,56 @@ extends Window
 
 @onready var Preset_focus = preload("res://assets/styles/preset_focus.tres")
 @onready var Preset_normal = preload("res://assets/styles/preset_normal.tres")
-
+@onready var Delete_menu = $"../Delete Menu"
+@onready var Delete_submenu = $"../Delete Menu/Delete Submenu"
 @onready var two_d = $"Control/Panel/VBoxContainer/Presets/HBoxContainer/2D"
 @onready var three_d_tps = $"Control/Panel/VBoxContainer/Presets/HBoxContainer/3D"
 @onready var three_d_fps = $"Control/Panel/VBoxContainer/Presets/HBoxContainer/3D2"
 
-# Called when the node enters the scene tree for the first time.
+var project_to_delete = null
+
+
+func delete_dir_recursive(path: String):
+	var dir = DirAccess.open(path)
+	if dir == null:
+		return
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+
+	while file_name != "":
+		if file_name != "." and file_name != "..":
+			var full_path = path + "/" + file_name
+			if dir.current_is_dir():
+				delete_dir_recursive(full_path)
+			else:
+				DirAccess.remove_absolute(full_path)
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
+	DirAccess.remove_absolute(path)
+
+
+func delete_project():
+	if project_to_delete == null:
+		return
+	var dir = DirAccess.open("user://")
+	if dir == null:
+		return
+	if project_to_delete.project_path == "C:\\Users\\kolor\\Documents\\scratch-engine":
+		return
+	if dir.dir_exists("projects/" + project_to_delete.project_name):
+		delete_dir_recursive(dir.get_current_dir() + "projects/" + project_to_delete.project_name)
+	dir = DirAccess.open(project_to_delete.project_path)
+	if dir == null:
+		return
+	delete_dir_recursive(project_to_delete.project_path)
+	
+	project_to_delete = null
+	
 func _ready() -> void:
-	pass # Replace with function body.
+	prepare_delete_popup()
+	
 
 func create_workflow(path: String) -> bool:
 	path = path.simplify_path()
@@ -66,28 +108,28 @@ func create_workflow(path: String) -> bool:
 func _process(_delta: float) -> void:
 	pass
 	
-func create_slug(input: String) -> String:
-	# Tworzenie i kompilacja RegEx
-	var regex = RegEx.create_from_string("[^\\w\\d]+")
-	
-	# Zamień niealfanumeryczne znaki na myślniki
-	var slug = regex.sub(input.to_lower(), "-")
-	
-	# Usuń ewentualne myślniki na końcach - DWA sposoby:
-	
-	# SPOSÓB 1: strip_edges() bez argumentów usuwa białe znaki
-	slug = slug.strip_edges()
-	# Następnie usuń myślniki z końców ręcznie:
-	while slug.begins_with("-"):
-		slug = slug.substr(1)
-	while slug.ends_with("-"):
-		slug = slug.substr(0, slug.length() - 1)
-	
-	# SPOSÓB 2: Użyj trim_prefix() i trim_suffix()
-	slug = slug.strip_edges()  # najpierw białe znaki
-	slug = slug.trim_prefix("-").trim_suffix("-")
-	
-	return slug
+#func create_slug(input: String) -> String:
+	## Tworzenie i kompilacja RegEx
+	#var regex = RegEx.create_from_string("[^\\w\\d]+")
+	#
+	## Zamień niealfanumeryczne znaki na myślniki
+	#var slug = regex.sub(input.to_lower(), "-")
+	#
+	## Usuń ewentualne myślniki na końcach - DWA sposoby:
+	#
+	## SPOSÓB 1: strip_edges() bez argumentów usuwa białe znaki
+	#slug = slug.strip_edges()
+	## Następnie usuń myślniki z końców ręcznie:
+	#while slug.begins_with("-"):
+		#slug = slug.substr(1)
+	#while slug.ends_with("-"):
+		#slug = slug.substr(0, slug.length() - 1)
+	#
+	## SPOSÓB 2: Użyj trim_prefix() i trim_suffix()
+	#slug = slug.strip_edges()  # najpierw białe znaki
+	#slug = slug.trim_prefix("-").trim_suffix("-")
+	#
+	#return slug
 
 # Presets Dynamic Focus =========================================================
 func _on_d_pressed() -> void:
@@ -112,9 +154,7 @@ var current_create_project_name
 var current_create_project_git_integrity
 
 func _on_create_pressed() -> void:
-	create_workflow(current_create_project_path_with_name)
-	$".".hide()
-
+	$"../U sure?".show()
 
 func _on_file_dialog_confirmed() -> void:
 	current_create_project_path = $"../FileDialog".current_path
@@ -126,7 +166,7 @@ func _on_path_choose_pressed() -> void:
 
 func _on_project_name_changed(new_text: String) -> void:
 	current_create_project_name = $"Control/Panel/VBoxContainer/Project Name/LineEdit".text
-	current_create_project_path_with_name = str(current_create_project_path) + str(create_slug(current_create_project_name))
+	current_create_project_path_with_name = str(current_create_project_path) + current_create_project_name
 	$"Control/Panel/VBoxContainer/Project Path/LineEdit".text = current_create_project_path_with_name
 
 
@@ -167,6 +207,9 @@ func create_project(project_to_create_name, project_to_create_path):
 	file.close()
 
 func load_all_projects():
+	var flow_cont = $"../VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer"
+	for child in flow_cont.get_children():
+		child.queue_free()
 	var dir = DirAccess.open("user://projects/")
 	if dir == null:
 		return
@@ -187,3 +230,48 @@ func load_all_projects():
 			$"../VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer".add_child(ready_project_icon)
 			
 	dir.list_dir_end()
+
+
+func _on_yes_pressed() -> void:
+	$"../U sure?".hide()
+	create_workflow(current_create_project_path_with_name)
+	$".".hide()
+
+func _on_no_pressed() -> void:
+	$"../U sure?".hide()
+
+
+func _on_flow_container_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		var mouse_pos = event.position
+		for child in $"../VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer".get_children():
+			if child.get_global_rect().has_point(mouse_pos):
+				var mouse_local: Vector2 = get_viewport().get_mouse_position()
+
+				var screen_mouse: Vector2 = mouse_local
+				Delete_menu.popup(Rect2i(screen_mouse, Delete_menu.size))
+				project_to_delete = child
+
+func prepare_delete_popup():
+	Delete_menu.clear()
+	
+	# --- File Submenu ---
+	Delete_submenu.add_item("Delete", 1)
+
+	Delete_menu.add_submenu_node_item("Delete", Delete_submenu)
+
+	Delete_menu.hide()
+
+func _on_delete_submenu_id_pressed(id: int) -> void:
+	match id:
+		1: $"../delete project?".show()
+
+
+func _on_delete_no_pressed() -> void:
+	$"../delete project?".hide()
+	
+
+func _on_delete_yes_pressed() -> void:
+	delete_project()
+	$"../delete project?".hide()
+	load_all_projects()

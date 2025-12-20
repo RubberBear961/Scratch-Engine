@@ -23,18 +23,16 @@ func _ready() -> void:
 	$"Project Settings".hide()
 
 func check_focus():
-	if Global.focus == "2D":
-		$"GUI/Main Categories/ViewPorts/2D".add_theme_stylebox_override("normal", active)
-		$"GUI/Main Categories/ViewPorts/3D".add_theme_stylebox_override("normal", normal)
-		$"GUI/Main Categories/ViewPorts/CODE".add_theme_stylebox_override("normal", normal)
-	elif Global.focus == "3D":
-		$"GUI/Main Categories/ViewPorts/2D".add_theme_stylebox_override("normal", normal)
-		$"GUI/Main Categories/ViewPorts/3D".add_theme_stylebox_override("normal", active)
-		$"GUI/Main Categories/ViewPorts/CODE".add_theme_stylebox_override("normal", normal)
-	else:
-		$"GUI/Main Categories/ViewPorts/2D".add_theme_stylebox_override("normal", normal)
-		$"GUI/Main Categories/ViewPorts/3D".add_theme_stylebox_override("normal", normal)
-		$"GUI/Main Categories/ViewPorts/CODE".add_theme_stylebox_override("normal", active)
+	for child in $GUI/Content/ViewPort.get_children():
+		if child.name == Global.focus:
+			child.visible = true
+		else:
+			child.visible = false
+	for child in $"GUI/Main Categories/ViewPorts".get_children():
+		if child.name == Global.focus:
+			child.add_theme_stylebox_override("normal", active)
+		else:
+			child.add_theme_stylebox_override("normal", normal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -107,29 +107,6 @@ func create_workflow(path: String) -> bool:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-	
-#func create_slug(input: String) -> String:
-	## Tworzenie i kompilacja RegEx
-	#var regex = RegEx.create_from_string("[^\\w\\d]+")
-	#
-	## Zamień niealfanumeryczne znaki na myślniki
-	#var slug = regex.sub(input.to_lower(), "-")
-	#
-	## Usuń ewentualne myślniki na końcach - DWA sposoby:
-	#
-	## SPOSÓB 1: strip_edges() bez argumentów usuwa białe znaki
-	#slug = slug.strip_edges()
-	## Następnie usuń myślniki z końców ręcznie:
-	#while slug.begins_with("-"):
-		#slug = slug.substr(1)
-	#while slug.ends_with("-"):
-		#slug = slug.substr(0, slug.length() - 1)
-	#
-	## SPOSÓB 2: Użyj trim_prefix() i trim_suffix()
-	#slug = slug.strip_edges()  # najpierw białe znaki
-	#slug = slug.trim_prefix("-").trim_suffix("-")
-	#
-	#return slug
 
 # Presets Dynamic Focus =========================================================
 func _on_d_pressed() -> void:

@@ -12,10 +12,25 @@ func _process(delta: float) -> void:
 	
 func show_only_selected_code(selected_code : String):
 	for child in self.get_children():
-		child.visible = (child.name == selected_code)
+		print(child.name)
+		print(selected_code)
+		if child.name == selected_code:
+			child.visible = true
+		else:
+			child.visible = false
 
 func create_new_code_with_name(code_name : String):
 	var code = preload("res://scenes/code.tscn")
 	var new_code = code.instantiate()
+	new_code.code_name(code_name)
 	new_code.name = code_name
+	new_code.visible = false
 	self.add_child(new_code)
+
+func rename_existing_code(rename_from : String, rename_to : String):
+	print("Renaming from -> " + rename_from)
+	var all_children = self.get_children()
+	for child in all_children:
+		if child.name == rename_from:
+			child.name = rename_to
+			child.code_name(rename_to)

@@ -1,10 +1,10 @@
 extends Control
 
+@onready var X = $Panel/HBoxContainer/INP/LineEdit
+@onready var Y = $Panel/HBoxContainer/INP2/LineEdit2
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
+func _ready():
+	set_meta("type", "go_to")
 
 func _process(delta: float) -> void:
 	var inp1 = find_child("INP")  # Szuka w całym drzewie

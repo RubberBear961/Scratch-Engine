@@ -28,11 +28,27 @@ var shadow_block : Control = null
 var snap = null
 var snapping_threshold = 30
 
+func code_name(name : String):
+	$HBoxContainer/DeadZones/Spacer2/path.text = name
+
 func _ready() -> void:
 	for block in blocks_list.get_children():
 		var real_block = block.get_child(0)
 		real_block.gui_input.connect(func(event): _on_block_grabbed(event, block))
-		
+
+
+func _on_go_to_changed(new_text: String, block: Control):
+	print("changed!")
+	var X = block.get_node("Panel/HBoxContainer/INP/LineEdit")
+	var Y = block.get_node("Panel/HBoxContainer/INP2/LineEdit2")
+	block.set_meta("x_target", int(X.text))
+	block.set_meta("y_target", int(Y.text))
+	if Connections.has(block.name):
+		Connections[block.name]["meta"] = {
+			"x_target": block.get_meta("x_target"),
+			"y_target": block.get_meta("y_target")
+		}
+
 #Saving Functions --------------------------------------------------------
 func update_dictionary(mode: int):
 	print("Updating Dictionary!")
@@ -84,6 +100,7 @@ func update_dictionary(mode: int):
 		"connected_above": -1,
 		"connected_below": -1
 		}
+		
 		placedblock = null
 		Connections = OldOne
 		print(Connections)
@@ -209,6 +226,19 @@ func _on_block_grabbed(event: InputEvent, block: Control) -> void:
 				dragging_block.name = str(workspace.get_child_count() + 1)
 				dragging_block.set_meta("type", block.name)
 				workspace.add_child(dragging_block)
+				
+				# Connecting to a different parameters functions:
+				if dragging_block.get_meta("type") == "go_to":
+					print("connected!")
+					var real_block = dragging_block.get_child(0)
+					print(real_block)
+					var X = real_block.get_node("Panel/HBoxContainer/INP/LineEdit")
+					var Y = real_block.get_node("Panel/HBoxContainer/INP2/LineEdit2")
+					X.text = str(real_block.get_meta("x_target", 0))
+					Y.text = str(real_block.get_meta("y_target", 0))
+					X.connect("text_changed", Callable(self, "_on_go_to_changed").bind(real_block))
+					Y.connect("text_changed", Callable(self, "_on_go_to_changed").bind(real_block))
+				
 				drag_offset = get_global_mouse_position() - block.global_position
 				setup_draggable(dragging_block.get_child(0), dragging_block)
 				dragging_block.position = workspace.get_local_mouse_position() - drag_offset
@@ -234,7 +264,6 @@ func _on_block_grabbed(event: InputEvent, block: Control) -> void:
 					shadow_cast = null
 
 func _process(delta: float) -> void:
-	check_if_visible()
 	
 	found_snap = false
 	
@@ -340,19 +369,18 @@ func _on_motion_gui_input(event: InputEvent) -> void:
 
 #Trash below -------------------------------------------------------------
 func _input(event: InputEvent):
-	# Sprawdź czy przeciągamy blok i puszczamy przycisk
+	if event.is_action_pressed("save"):
+		var ancestor = self.get_parent().get_parent().get_parent().get_parent().get_parent()
+		var SaveManager = ancestor.get_node("SaveManager")
+		print(SaveManager)
+		SaveManager.save_script(Connections,self.name + ".sc")
 	if dragging_block != null:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-			if not event.pressed:  # Przycisk puszczony
-				# Sprawdź czy kursor jest nad dead zone
+			if not event.pressed:
 				var dead_zone_rect = $HBoxContainer/DeadZones.get_global_rect()
 				var mouse_pos = get_global_mouse_position()
 				
 				if dead_zone_rect.has_point(mouse_pos):
-					print("Dropping block in dead zone")
-					print("FOR SECTION =====================")
-					print(get_blocks_in_column_below(dragging_block))
-					
 					var column_blocks = get_blocks_in_column_below(dragging_block)
 					var block_keys = column_blocks.keys()
 					
@@ -373,7 +401,5 @@ func _input(event: InputEvent):
 					if shadow_cast != null:
 						shadow_cast.queue_free()
 						shadow_cast = null
-					
-					print("Block/s removed in dead zone")
-					print(Connections)
 					return
+					

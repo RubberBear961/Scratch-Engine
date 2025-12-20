@@ -4,6 +4,7 @@ extends Tree
 @onready var file_popup = $File_popup
 @onready var folder_file_submenu = $Folder_popup/Folder_file_submenu
 @onready var file_file_submenu = $File_popup/file_file_submenu
+@onready var rename_panel = $"../../../../../../Rename_panel"
 
 var sprite_icon = preload("res://assets/icons/sprite.png")
 var folder_icon = preload("res://assets/icons/folder.png")
@@ -16,22 +17,27 @@ func rename_selected_item():
 	if not item:
 		return
 	if item.get_metadata(0) == Global.current_working_project_path:
-		$"../../../../../../warning".warn("[Fluppy] -> You cannot change root dir name from here!")
+		$"../../../../../../warning".push_warn("[Fluppy] -> You cannot change root dir name from here!")
 		return
 
 	var text = item.get_text(0)
 	var dot = text.rfind(".")
 	var base = text.substr(0, dot) if dot > 0 else text
-	var extension = text.substr(dot) if dot > 0 else ""
 
-	var editor = LineEdit.new()
-	editor.text = base
-	editor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	add_child(editor)
+	var editor = $"../../../../../../Rename_panel/LineEdit"
+	editor.text = text
+	
+	var mouse_local: Vector2 = get_viewport().get_mouse_position()
+	var window_pos: Vector2i = DisplayServer.window_get_position()
 
-	editor.connect("text_submitted", Callable(self, "_on_custom_rename_done").bind(item, extension))
+	var screen_mouse: Vector2 = mouse_local + Vector2(window_pos)
+	rename_panel.popup(Rect2i(screen_mouse, folder_popup.size))
+	
+	rename_panel.size = Vector2(44,28)
+	editor.size = Vector2(0,0)
+	
 	editor.grab_focus()
-	editor.select_all()
+	editor.select(0,base.length())
 
 
 	
@@ -44,6 +50,7 @@ func create_part(type : String, path : String):
 	elif type == "Script":
 		var new_file = FileAccess.open(path + "/New_Script.sc",FileAccess.WRITE)
 		new_file.close()
+		$"../../../../ViewPort/CODE".create_new_code_with_name("New_Script")
 	elif type == "Sprite":
 		var new_file = FileAccess.open(path + "/New_Sprite.scs",FileAccess.WRITE)
 		new_file.close()
@@ -171,6 +178,9 @@ func add_folder_to_tree(parent_item: TreeItem, path: String) -> void:
 			var preloaded_custom_icon = load(full_path)
 			item.set_icon(0, preloaded_custom_icon)
 			item.set_icon_max_width(0,15)
+		elif full_path.ends_with(".scs"):
+			item.set_icon(0, sprite_icon)
+			item.set_icon_max_width(0,12)
 
 		if dir.dir_exists(full_path): 
 			add_folder_to_tree(item, full_path) 
@@ -194,6 +204,7 @@ func _ready():
 	load_project_tree()
 	prepare_folder_popup()
 	prepare_file_popup()
+	rename_panel.hide()
 
 
 
@@ -234,6 +245,7 @@ func _on_folder_file_submenu_id_pressed(id: int) -> void:
 		
 func _on_file_popup_id_pressed(id: int) -> void:
 	match id:
+		0: $"../../../../ViewPort/CODE".show_only_selected_code(get_selected().get_text(0).get_basename())
 		2: rename_selected_item()
 		4: delete_part(Global.current_working_project_path,focused_part)
 
@@ -245,20 +257,28 @@ func _on_item_edited() -> void:
 		return
 	dir.rename(focused_part,self.get_selected().get_text(0))
 	item.set_editable(0,false)
-	
-func _on_custom_rename_done(item: TreeItem, extension: String, new_name: String):
-	var dir = DirAccess.open(Global.current_working_project_path)
-	if not dir:
-		return
-	item.set_text(0, new_name + extension)
-	item.set_editable(0, false)
-	item.queue_free()
-	dir.rename(focused_part,item.get_text(0))
 
 
 func _on_file_file_submenu_id_pressed(id: int) -> void:
-	var parent_dir = focused_part.get_base_dir()
+	var parent_dir = focused_part.get_base_dir() if focused_part else ""
 	match id:
 		10: create_part("Folder", parent_dir)
 		11: create_part("Script", parent_dir)
 		12: create_part("Sprite", parent_dir)
+
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	var dir = DirAccess.open(Global.current_working_project_path)
+	if not dir:
+		return
+	
+	var item = get_selected()
+	
+	item.set_text(0, new_text)
+	item.set_editable(0, false)
+	
+	var parent_path = focused_part.get_base_dir()
+	dir.rename(focused_part,parent_path + "/" + item.get_text(0))
+	rename_panel.hide()
+	rename_panel.size.x = 44
+	$"../../../../ViewPort/CODE".rename_existing_code(focused_part.get_file().get_basename(),item.get_text(0).get_basename())

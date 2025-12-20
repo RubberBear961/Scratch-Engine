@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvcswqrqa2r8g"]
+[gd_scene load_steps=17 format=3 uid="uid://cvcswqrqa2r8g"]
 
 [ext_resource type="Script" uid="uid://bml2dc6tmrsim" path="res://scenes/code.gd" id="1_11xo6"]
 [ext_resource type="PackedScene" uid="uid://cvuef0aj7qfju" path="res://scenes/blocks/motion/go_to.tscn" id="2_g3jxj"]
 [ext_resource type="PackedScene" uid="uid://bbs62m3hr166o" path="res://scenes/blocks/looks/show.tscn" id="3_b1kht"]
 [ext_resource type="PackedScene" uid="uid://cfjfav082wthf" path="res://scenes/blocks/looks/hide.tscn" id="4_m65o3"]
 [ext_resource type="PackedScene" uid="uid://c25m6sxsnri8n" path="res://scenes/blocks/events/when_start_clicked.tscn" id="5_mh5tr"]
+[ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="6_g3jxj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paw66"]
 bg_color = Color(0.29803923, 0.5921569, 1, 1)
@@ -413,6 +414,19 @@ scale = Vector2(0.7, 0.7)
 [node name="Spacer2" type="Control" parent="HBoxContainer/DeadZones"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+
+[node name="path" type="Label" parent="HBoxContainer/DeadZones/Spacer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_g3jxj")
+theme_override_font_sizes/font_size = 19
+text = "script.sc"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Workspace" type="Panel" parent="HBoxContainer"]
 layout_mode = 2

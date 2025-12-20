@@ -8,8 +8,11 @@ func _ready():
 func save_script(script_data: Dictionary, script_name : String):
 	if script_data.is_empty():
 		return false
-	
-	var file_path = Global.current_working_project_path + script_name
+	print("Saving dir -> " + Global.current_working_project_path)
+	print("Saving file -> " + script_name)
+	print("Full saving path -> " + Global.current_working_project_path + "/" +script_name)
+	print("Content -> ", script_data)
+	var file_path = Global.current_working_project_path + "/" + script_name
 	var file = FileAccess.open(file_path,FileAccess.WRITE)
 	
 	if file == null:

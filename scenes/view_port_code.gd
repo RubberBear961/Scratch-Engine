@@ -34,3 +34,16 @@ func rename_existing_code(rename_from : String, rename_to : String):
 		if child.name == rename_from:
 			child.name = rename_to
 			child.code_name(rename_to)
+
+func open_script(script_name : String):
+	var all_children = self.get_children()
+	var found_child = false
+	for child in all_children:
+		if child.name == script_name:
+			found_child = true
+	if found_child:
+		show_only_selected_code(script_name)
+	else:
+		create_new_code_with_name(script_name)
+		show_only_selected_code(script_name)
+	Global.current_working_script = script_name

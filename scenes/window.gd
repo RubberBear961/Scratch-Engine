@@ -78,7 +78,7 @@ func create_workflow(path: String) -> bool:
 	
 	print("[Fluppy] -> Directory created successfully")
 	
-	var file_path = path.path_join("project.sce")
+	var file_path = path.path_join("project.scx")
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
 	
 	if not file:

@@ -38,15 +38,14 @@ func _ready() -> void:
 
 
 func _on_go_to_changed(new_text: String, block: Control):
-	print("changed!")
-	var X = block.get_node("Panel/HBoxContainer/INP/LineEdit")
-	var Y = block.get_node("Panel/HBoxContainer/INP2/LineEdit2")
+	var X = block.get_child(0).get_node("Panel/HBoxContainer/INP/LineEdit")
+	var Y = block.get_child(0).get_node("Panel/HBoxContainer/INP2/LineEdit2")
 	block.set_meta("x_target", int(X.text))
 	block.set_meta("y_target", int(Y.text))
 	if Connections.has(block.name):
-		Connections[block.name]["meta"] = {
-			"x_target": block.get_meta("x_target"),
-			"y_target": block.get_meta("y_target")
+		Connections[block.name]["params"] = {
+			"x": block.get_meta("x_target"),
+			"y": block.get_meta("y_target")
 		}
 
 #Saving Functions --------------------------------------------------------
@@ -229,15 +228,13 @@ func _on_block_grabbed(event: InputEvent, block: Control) -> void:
 				
 				# Connecting to a different parameters functions:
 				if dragging_block.get_meta("type") == "go_to":
-					print("connected!")
 					var real_block = dragging_block.get_child(0)
-					print(real_block)
 					var X = real_block.get_node("Panel/HBoxContainer/INP/LineEdit")
 					var Y = real_block.get_node("Panel/HBoxContainer/INP2/LineEdit2")
 					X.text = str(real_block.get_meta("x_target", 0))
 					Y.text = str(real_block.get_meta("y_target", 0))
-					X.connect("text_changed", Callable(self, "_on_go_to_changed").bind(real_block))
-					Y.connect("text_changed", Callable(self, "_on_go_to_changed").bind(real_block))
+					X.connect("text_changed", Callable(self, "_on_go_to_changed").bind(dragging_block))
+					Y.connect("text_changed", Callable(self, "_on_go_to_changed").bind(dragging_block))
 				
 				drag_offset = get_global_mouse_position() - block.global_position
 				setup_draggable(dragging_block.get_child(0), dragging_block)
@@ -367,13 +364,11 @@ func _on_motion_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("change to Motion Tab")
 
+func get_dictionary():
+	return Connections
+
 #Trash below -------------------------------------------------------------
 func _input(event: InputEvent):
-	if event.is_action_pressed("save"):
-		var ancestor = self.get_parent().get_parent().get_parent().get_parent().get_parent()
-		var SaveManager = ancestor.get_node("SaveManager")
-		print(SaveManager)
-		SaveManager.save_script(Connections,self.name + ".sc")
 	if dragging_block != null:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if not event.pressed:

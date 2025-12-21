@@ -48,11 +48,11 @@ func create_part(type : String, path : String):
 	if type == "Folder":
 		DirAccess.make_dir_absolute(path + "/New Folder")
 	elif type == "Script":
-		var new_file = FileAccess.open(path + "/New_Script.sc",FileAccess.WRITE)
+		var new_file = FileAccess.open(path + "/New_Script.scrx",FileAccess.WRITE)
 		new_file.close()
 		$"../../../../ViewPort/CODE".create_new_code_with_name("New_Script")
 	elif type == "Sprite":
-		var new_file = FileAccess.open(path + "/New_Sprite.scs",FileAccess.WRITE)
+		var new_file = FileAccess.open(path + "/New_Sprite.spr",FileAccess.WRITE)
 		new_file.close()
 	load_project_tree()
 
@@ -158,7 +158,7 @@ func add_folder_to_tree(parent_item: TreeItem, path: String) -> void:
 	var file_name = dir.get_next()
 	
 	while file_name != "":
-		if file_name.begins_with(".") or file_name.ends_with(".import"):
+		if file_name.begins_with(".") or file_name.ends_with(".import") or file_name.ends_with(".scx"):
 			file_name = dir.get_next()
 			continue
 
@@ -171,14 +171,14 @@ func add_folder_to_tree(parent_item: TreeItem, path: String) -> void:
 		if dir.dir_exists(full_path):
 			item.set_icon(0,folder_icon)
 			item.set_icon_max_width(0,15)
-		elif full_path.ends_with(".sc"):
+		elif full_path.ends_with(".scrx"):
 			item.set_icon(0, script_icon)
 			item.set_icon_max_width(0,15)
 		elif full_path.ends_with(".svg") or full_path.ends_with(".png"):
 			var preloaded_custom_icon = load(full_path)
 			item.set_icon(0, preloaded_custom_icon)
 			item.set_icon_max_width(0,15)
-		elif full_path.ends_with(".scs"):
+		elif full_path.ends_with(".spr"):
 			item.set_icon(0, sprite_icon)
 			item.set_icon_max_width(0,12)
 
@@ -222,7 +222,6 @@ func _on_tree_gui_input(event: InputEvent) -> void:
 					var screen_mouse: Vector2 = mouse_local + Vector2(window_pos)
 					folder_popup.popup(Rect2i(screen_mouse, folder_popup.size))
 					focused_part = path
-					print("dir")
 				else:
 					var mouse_local: Vector2 = get_viewport().get_mouse_position()
 					var window_pos: Vector2i = DisplayServer.window_get_position()
@@ -245,7 +244,7 @@ func _on_folder_file_submenu_id_pressed(id: int) -> void:
 		
 func _on_file_popup_id_pressed(id: int) -> void:
 	match id:
-		0: $"../../../../ViewPort/CODE".show_only_selected_code(get_selected().get_text(0).get_basename())
+		0: $"../../../../ViewPort/CODE".open_script(get_selected().get_text(0).get_basename())
 		2: rename_selected_item()
 		4: delete_part(Global.current_working_project_path,focused_part)
 
@@ -271,6 +270,14 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	var dir = DirAccess.open(Global.current_working_project_path)
 	if not dir:
 		return
+		
+	if new_text.ends_with(".scx"):
+		$"../../../../../../warning".push_warn(".scx extension is reserved for project configuration file!")
+		return
+	elif new_text.ends_with(".run"):
+		$"../../../../../../warning".push_warn('Neither files nor folders can be named ".run", as it is reserved for compiler temporary files.')
+		return
+		
 	
 	var item = get_selected()
 	
@@ -282,3 +289,4 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	rename_panel.hide()
 	rename_panel.size.x = 44
 	$"../../../../ViewPort/CODE".rename_existing_code(focused_part.get_file().get_basename(),item.get_text(0).get_basename())
+	load_project_tree()

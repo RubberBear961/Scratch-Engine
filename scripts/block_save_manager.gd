@@ -12,7 +12,7 @@ func save_script(script_data: Dictionary, script_name : String):
 	print("Saving file -> " + script_name)
 	print("Full saving path -> " + Global.current_working_project_path + "/" +script_name)
 	print("Content -> ", script_data)
-	var file_path = Global.current_working_project_path + "/" + script_name
+	var file_path = Global.current_working_project_path + "/" + script_name + ".scrx"
 	var file = FileAccess.open(file_path,FileAccess.WRITE)
 	
 	if file == null:
@@ -39,3 +39,26 @@ func load_script(script_name : String) -> Dictionary:
 	
 	current_project_path = file_path
 	return parsed
+
+func get_script_dictionary(script_name : String):
+	var all_children = $"../GUI/Content/ViewPort/CODE".get_children()
+	for child in all_children:
+		if child.name == script_name:
+			return child.get_dictionary()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("save"):
+		$"../SaveProgress".show()
+		$"../SaveProgress/VBoxContainer/ProgressBar".value = 0
+
+		await get_tree().process_frame
+
+		save_script(
+			get_script_dictionary(Global.current_working_script),
+			Global.current_working_script
+		)
+
+		$"../SaveProgress/VBoxContainer/ProgressBar".value = 100
+		await get_tree().process_frame
+
+		$"../SaveProgress".hide()

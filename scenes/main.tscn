@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvajurbkaakch"]
+[gd_scene load_steps=29 format=3 uid="uid://dvajurbkaakch"]
 
 [ext_resource type="Script" uid="uid://bs6sbg3430tln" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="StyleBox" uid="uid://nlw5h3bdhv0j" path="res://assets/styles/normal_state_mode.tres" id="2_jyhfs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://vgfq5gttywkt" path="res://scenes/view_port_code.gd" id="6_tipki"]
 [ext_resource type="Script" uid="uid://2k5kwbj20vm8" path="res://scripts/block_save_manager.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://ddajlju6garrl" path="res://scenes/warning.gd" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://bkiblvqtqruc0" path="res://scenes/popup_panel.gd" id="9_choun"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbj1t"]
 content_margin_left = 2.0
@@ -168,6 +169,20 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmmt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yc10j"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jscy8"]
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3ni"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -372,6 +387,25 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("6_tipki")
 
+[node name="Empty_sy787c21t871ct878t712c87t 1ct787t13c38713t87c87t713t8731" type="Control" parent="GUI/Content/ViewPort/CODE"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GUI/Content/ViewPort/CODE/Empty_sy787c21t871ct878t712c87t 1ct787t13c38713t87c87t713t8731"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Open a script to see something here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="right_panel" type="VBoxContainer" parent="GUI/Content"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
@@ -488,6 +522,38 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_gqmmt")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_gqmmt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_gqmmt")
 expand_to_text_length = true
+
+[node name="SaveProgress" type="PopupPanel" parent="."]
+oversampling_override = 1.0
+initial_position = 4
+size = Vector2i(400, 150)
+theme_override_styles/panel = SubResource("StyleBoxFlat_yc10j")
+script = ExtResource("9_choun")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SaveProgress"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SaveProgress/VBoxContainer"]
+custom_minimum_size = Vector2(0, 63.34)
+layout_mode = 2
+text = "Saving code please wait..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="SaveProgress/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+theme_override_styles/background = SubResource("StyleBoxFlat_jscy8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pm3ni")
+value = 50.0
 
 [connection signal="pressed" from="GUI/Main Categories/ViewPorts/2D" to="." method="_on_2d_pressed"]
 [connection signal="pressed" from="GUI/Main Categories/ViewPorts/3D" to="." method="_on_3d_pressed"]

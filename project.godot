@@ -14,6 +14,7 @@ config/name="Scratch Engine"
 run/main_scene="uid://clcjvegkmxp4q"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/image="uid://b8v2t7gud1k75"
+config/icon="uid://ctncyxkrv3f6h"
 
 [autoload]
 

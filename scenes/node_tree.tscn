@@ -1,0 +1,240 @@
+[gd_scene load_steps=18 format=3 uid="uid://d21rk5x8a4hsu"]
+
+[ext_resource type="Script" uid="uid://cha6pw564xt4u" path="res://scenes/project_nodes.gd" id="1_arcv7"]
+[ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="2_scca8"]
+[ext_resource type="Script" uid="uid://bojnkx8vp1ytd" path="res://scenes/add_node.gd" id="3_6fk1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scca8"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fk1b"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmk2l"]
+bg_color = Color(0.24477652, 0.24477637, 0.24477637, 0.6392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tyfhg"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2auj"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(0.25490198, 0.25490198, 0.25490198, 0.48235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k41ur"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ss00y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrwmn"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vmli"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4ofj"]
+bg_color = Color(0.20784314, 0.20784314, 0.20784314, 0.5294118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8y2g"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hy23u"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3p1a"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05b3o"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Node Tree" type="Tree"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_scca8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6fk1b")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_hmk2l")
+script = ExtResource("1_arcv7")
+
+[node name="Folder_popup" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tyfhg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u2auj")
+
+[node name="Folder_file_submenu" type="PopupMenu" parent="Folder_popup"]
+oversampling_override = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tyfhg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u2auj")
+
+[node name="Rename_node_panel" type="PopupPanel" parent="."]
+oversampling_override = 1.0
+size = Vector2i(76, 39)
+theme_override_styles/panel = SubResource("StyleBoxFlat_k41ur")
+
+[node name="LineEdit" type="LineEdit" parent="Rename_node_panel"]
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 73.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("2_scca8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ss00y")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_ss00y")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ss00y")
+expand_to_text_length = true
+
+[node name="AddNode" type="Window" parent="."]
+oversampling_override = 1.0
+title = "Add node to scene"
+initial_position = 4
+size = Vector2i(600, 400)
+transient = true
+exclusive = true
+script = ExtResource("3_6fk1b")
+
+[node name="Panel" type="Panel" parent="AddNode"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AddNode/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tree" type="Tree" parent="AddNode/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yrwmn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6vmli")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_y4ofj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AddNode/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+alignment = 1
+
+[node name="Add" type="Button" parent="AddNode/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_t8y2g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hy23u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a3p1a")
+theme_override_styles/focus = SubResource("StyleBoxFlat_05b3o")
+text = "Add Node"
+
+[node name="Cancel" type="Button" parent="AddNode/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_t8y2g")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hy23u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a3p1a")
+theme_override_styles/focus = SubResource("StyleBoxFlat_05b3o")
+text = "Cancel"
+
+[connection signal="gui_input" from="." to="." method="_on_tree_gui_input"]
+[connection signal="id_pressed" from="Folder_popup" to="." method="_on_folder_popup_id_pressed"]
+[connection signal="id_pressed" from="Folder_popup/Folder_file_submenu" to="." method="_on_folder_file_submenu_id_pressed"]
+[connection signal="text_submitted" from="Rename_node_panel/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="close_requested" from="AddNode" to="AddNode" method="_on_close_requested"]
+[connection signal="pressed" from="AddNode/Panel/VBoxContainer/HBoxContainer/Add" to="AddNode" method="_on_add_pressed"]
+[connection signal="pressed" from="AddNode/Panel/VBoxContainer/HBoxContainer/Cancel" to="AddNode" method="_on_cancel_pressed"]

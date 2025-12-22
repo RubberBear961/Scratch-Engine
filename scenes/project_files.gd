@@ -4,7 +4,11 @@ extends Tree
 @onready var file_popup = $File_popup
 @onready var folder_file_submenu = $Folder_popup/Folder_file_submenu
 @onready var file_file_submenu = $File_popup/file_file_submenu
-@onready var rename_panel = $"../../../../../../Rename_panel"
+@onready var rename_panel = $"../../../../../../Rename_file_panel"
+
+@onready var script_viewport_handler = $"../../../../ViewPort/CODE"
+@onready var sprite_viewport_handler = $"../../../../ViewPort/2D"
+@onready var sprite_node_handler = $"../../../ProjectNodes/Inside/Tree Control"
 
 var sprite_icon = preload("res://assets/icons/sprite.png")
 var folder_icon = preload("res://assets/icons/folder.png")
@@ -12,6 +16,26 @@ var script_icon = preload("res://assets/icons/script.png")
 
 var focused_part = null
 
+func open():
+	if focused_part.ends_with(".scrx"):
+		script_viewport_handler.open_script(get_selected().get_text(0).get_basename())
+	elif focused_part.ends_with(".spr"):
+		print("yeah")
+		var file = FileAccess.open(focused_part,FileAccess.READ)
+		if file == null:
+			return
+		var text = file.get_as_text()
+		file.close()
+		
+		
+		var parsed = JSON.parse_string(text)
+		if parsed == null:
+			parsed = {}
+		print(parsed)
+		sprite_viewport_handler.open_sprite(get_selected().get_text(0).get_basename())
+		sprite_node_handler.open_sprite(get_selected().get_text(0).get_basename())
+		sprite_node_handler.load_sprite_node_content(get_selected().get_text(0).get_basename(),parsed)
+		
 func rename_selected_item():
 	var item = get_selected()
 	if not item:
@@ -24,7 +48,7 @@ func rename_selected_item():
 	var dot = text.rfind(".")
 	var base = text.substr(0, dot) if dot > 0 else text
 
-	var editor = $"../../../../../../Rename_panel/LineEdit"
+	var editor = $"../../../../../../Rename_file_panel/LineEdit"
 	editor.text = text
 	
 	var mouse_local: Vector2 = get_viewport().get_mouse_position()
@@ -175,9 +199,10 @@ func add_folder_to_tree(parent_item: TreeItem, path: String) -> void:
 			item.set_icon(0, script_icon)
 			item.set_icon_max_width(0,15)
 		elif full_path.ends_with(".svg") or full_path.ends_with(".png"):
-			var preloaded_custom_icon = load(full_path)
-			item.set_icon(0, preloaded_custom_icon)
-			item.set_icon_max_width(0,15)
+			var image = Image.load_from_file(full_path)
+			var texture = ImageTexture.create_from_image(image)
+			item.set_icon(0, texture)
+			item.set_icon_max_width(0, 15)
 		elif full_path.ends_with(".spr"):
 			item.set_icon(0, sprite_icon)
 			item.set_icon_max_width(0,12)
@@ -244,7 +269,7 @@ func _on_folder_file_submenu_id_pressed(id: int) -> void:
 		
 func _on_file_popup_id_pressed(id: int) -> void:
 	match id:
-		0: $"../../../../ViewPort/CODE".open_script(get_selected().get_text(0).get_basename())
+		0: open()
 		2: rename_selected_item()
 		4: delete_part(Global.current_working_project_path,focused_part)
 
@@ -278,9 +303,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		$"../../../../../../warning".push_warn('Neither files nor folders can be named ".run", as it is reserved for compiler temporary files.')
 		return
 		
-	
 	var item = get_selected()
-	
 	item.set_text(0, new_text)
 	item.set_editable(0, false)
 	
@@ -288,5 +311,9 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	dir.rename(focused_part,parent_path + "/" + item.get_text(0))
 	rename_panel.hide()
 	rename_panel.size.x = 44
-	$"../../../../ViewPort/CODE".rename_existing_code(focused_part.get_file().get_basename(),item.get_text(0).get_basename())
+	if new_text.ends_with(".scrx"):
+		script_viewport_handler.rename_existing_code(focused_part.get_file().get_basename(),item.get_text(0).get_basename())
+	elif new_text.ends_with(".spr"):
+		sprite_viewport_handler.rename_existing_sprite(focused_part.get_file().get_basename(),item.get_text(0).get_basename())
+		sprite_node_handler.rename_existing_sprite(focused_part.get_file().get_basename(),item.get_text(0).get_basename())
 	load_project_tree()

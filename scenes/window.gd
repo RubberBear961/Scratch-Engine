@@ -136,7 +136,7 @@ func _on_create_pressed() -> void:
 func _on_file_dialog_confirmed() -> void:
 	current_create_project_path = $"../FileDialog".current_path
 	$"Control/Panel/VBoxContainer/Project Path/LineEdit".text = current_create_project_path
-
+	_on_project_name_changed($"Control/Panel/VBoxContainer/Project Name/LineEdit".text)
 func _on_path_choose_pressed() -> void:
 	$"../FileDialog".show()
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=33 format=3 uid="uid://dvajurbkaakch"]
+[gd_scene load_steps=30 format=3 uid="uid://dvajurbkaakch"]
 
 [ext_resource type="Script" uid="uid://bs6sbg3430tln" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="StyleBox" uid="uid://nlw5h3bdhv0j" path="res://assets/styles/normal_state_mode.tres" id="2_jyhfs"]
 [ext_resource type="StyleBox" uid="uid://emwaqs7eorah" path="res://assets/styles/selected_mode.tres" id="2_sugp2"]
 [ext_resource type="FontFile" uid="uid://cwrwhi4eaooyd" path="res://assets/fonts/RobotoMono-Regular.ttf" id="2_ya4ey"]
-[ext_resource type="Script" uid="uid://cha6pw564xt4u" path="res://scenes/project_nodes.gd" id="5_choun"]
 [ext_resource type="Script" uid="uid://ooptak1m84fv" path="res://scenes/project_files.gd" id="5_tipki"]
+[ext_resource type="Script" uid="uid://drugdinvgd4ax" path="res://scenes/node_tree_controler.gd" id="5_trceg"]
 [ext_resource type="Script" uid="uid://vgfq5gttywkt" path="res://scenes/view_port_code.gd" id="6_tipki"]
+[ext_resource type="Script" uid="uid://cnpcsjpmxi0ju" path="res://scenes/view_port_2d.gd" id="7_eb6dy"]
 [ext_resource type="Script" uid="uid://2k5kwbj20vm8" path="res://scripts/block_save_manager.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://ddajlju6garrl" path="res://scenes/warning.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bkiblvqtqruc0" path="res://scenes/popup_panel.gd" id="9_choun"]
@@ -174,60 +175,6 @@ bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm3ni"]
 bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6deb"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_og1vs"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 0.53333336, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wyq8"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxglm"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 5.0
-bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 0.53333336, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -354,23 +301,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Scene Nodes:"
 
-[node name="Node Tree" type="Tree" parent="GUI/Content/left_panel/ProjectNodes/Inside"]
+[node name="Tree Control" type="Control" parent="GUI/Content/left_panel/ProjectNodes/Inside"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_85g3d")
-theme_override_styles/focus = SubResource("StyleBoxFlat_tipki")
-theme_override_styles/hovered = SubResource("StyleBoxFlat_choun")
-script = ExtResource("5_choun")
-
-[node name="Folder_popup" type="PopupMenu" parent="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree"]
-oversampling_override = 1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ya4ey")
-theme_override_styles/hover = SubResource("StyleBoxFlat_eb6dy")
-
-[node name="Folder_file_submenu" type="PopupMenu" parent="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree/Folder_popup"]
-oversampling_override = 1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ya4ey")
-theme_override_styles/hover = SubResource("StyleBoxFlat_eb6dy")
+script = ExtResource("5_trceg")
 
 [node name="ProjectFiles" type="PanelContainer" parent="GUI/Content/left_panel"]
 custom_minimum_size = Vector2(0, 300)
@@ -421,6 +355,7 @@ size_flags_horizontal = 3
 [node name="2D" type="Control" parent="GUI/Content/ViewPort"]
 visible = false
 layout_mode = 2
+script = ExtResource("7_eb6dy")
 
 [node name="3D" type="Control" parent="GUI/Content/ViewPort"]
 visible = false
@@ -550,12 +485,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jkv2x")
 theme_override_styles/focus = SubResource("StyleBoxFlat_a8y0u")
 text = "Okay"
 
-[node name="Rename_panel" type="PopupPanel" parent="."]
+[node name="Rename_file_panel" type="PopupPanel" parent="."]
 oversampling_override = 1.0
 size = Vector2i(76, 39)
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
 
-[node name="LineEdit" type="LineEdit" parent="Rename_panel"]
+[node name="LineEdit" type="LineEdit" parent="Rename_file_panel"]
 offset_left = 3.0
 offset_top = 3.0
 offset_right = 73.0
@@ -598,62 +533,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_jscy8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pm3ni")
 value = 50.0
 
-[node name="AddNode" type="Window" parent="."]
-oversampling_override = 1.0
-title = "Add node to scene"
-initial_position = 4
-size = Vector2i(600, 400)
-
-[node name="Panel" type="Panel" parent="AddNode"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="AddNode/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Tree" type="Tree" parent="AddNode/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="AddNode/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-alignment = 1
-
-[node name="Add" type="Button" parent="AddNode/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_y6deb")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_og1vs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2wyq8")
-theme_override_styles/focus = SubResource("StyleBoxFlat_vxglm")
-text = "Add Node"
-
-[node name="Cancel" type="Button" parent="AddNode/Panel/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_y6deb")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_og1vs")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2wyq8")
-theme_override_styles/focus = SubResource("StyleBoxFlat_vxglm")
-text = "Cancel"
-
 [connection signal="pressed" from="GUI/Main Categories/ViewPorts/2D" to="." method="_on_2d_pressed"]
 [connection signal="pressed" from="GUI/Main Categories/ViewPorts/3D" to="." method="_on_3d_pressed"]
 [connection signal="pressed" from="GUI/Main Categories/ViewPorts/CODE" to="." method="_on_code_pressed"]
-[connection signal="gui_input" from="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree" to="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree" method="_on_tree_gui_input"]
-[connection signal="id_pressed" from="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree/Folder_popup" to="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree" method="_on_folder_popup_id_pressed"]
-[connection signal="id_pressed" from="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree/Folder_popup/Folder_file_submenu" to="GUI/Content/left_panel/ProjectNodes/Inside/Node Tree" method="_on_folder_file_submenu_id_pressed"]
 [connection signal="gui_input" from="GUI/Content/left_panel/ProjectFiles/Inside/Tree" to="GUI/Content/left_panel/ProjectFiles/Inside/Tree" method="_on_tree_gui_input"]
 [connection signal="id_pressed" from="GUI/Content/left_panel/ProjectFiles/Inside/Tree/Folder_popup" to="GUI/Content/left_panel/ProjectFiles/Inside/Tree" method="_on_folder_popup_id_pressed"]
 [connection signal="id_pressed" from="GUI/Content/left_panel/ProjectFiles/Inside/Tree/Folder_popup/Folder_file_submenu" to="GUI/Content/left_panel/ProjectFiles/Inside/Tree" method="_on_folder_file_submenu_id_pressed"]
@@ -661,4 +543,4 @@ text = "Cancel"
 [connection signal="id_pressed" from="GUI/Content/left_panel/ProjectFiles/Inside/Tree/File_popup/file_file_submenu" to="GUI/Content/left_panel/ProjectFiles/Inside/Tree" method="_on_file_file_submenu_id_pressed"]
 [connection signal="close_requested" from="Project Settings" to="." method="_on_project_settings_close_requested"]
 [connection signal="pressed" from="warning/Panel/VBoxContainer/HBoxContainer/Yes" to="warning" method="_on_yes_pressed"]
-[connection signal="text_submitted" from="Rename_panel/LineEdit" to="GUI/Content/left_panel/ProjectFiles/Inside/Tree" method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Rename_file_panel/LineEdit" to="GUI/Content/left_panel/ProjectFiles/Inside/Tree" method="_on_line_edit_text_submitted"]

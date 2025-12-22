@@ -7,7 +7,9 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Panel/VBoxContainer/Panel/VBoxContainer/Spacer/ProjectName.text = project_name
-	$Panel/VBoxContainer/Panel/VBoxContainer/Icon/TextureButton.texture_normal = load(project_icon)
+	var image = Image.load_from_file(project_icon)
+	var texture = ImageTexture.create_from_image(image)
+	$Panel/VBoxContainer/Panel/VBoxContainer/Icon/TextureButton.texture_normal = texture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

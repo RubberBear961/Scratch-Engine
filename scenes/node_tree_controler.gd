@@ -37,8 +37,6 @@ func open_sprite(sprite_name : String):
 
 func load_sprite_node_content(sprite_name : String, Dict : Dictionary):
 	var all_children = self.get_children()
-	print("searching for matching children!")
 	for child in all_children:
 		if child.name == sprite_name:
-			print("loading project file")
 			child.load_tree_data(Dict)

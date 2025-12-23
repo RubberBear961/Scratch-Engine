@@ -232,6 +232,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_05b3o")
 text = "Cancel"
 
 [connection signal="gui_input" from="." to="." method="_on_tree_gui_input"]
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]
 [connection signal="id_pressed" from="Folder_popup" to="." method="_on_folder_popup_id_pressed"]
 [connection signal="id_pressed" from="Folder_popup/Folder_file_submenu" to="." method="_on_folder_file_submenu_id_pressed"]
 [connection signal="text_submitted" from="Rename_node_panel/LineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dvajurbkaakch"]
+[gd_scene load_steps=35 format=3 uid="uid://dvajurbkaakch"]
 
 [ext_resource type="Script" uid="uid://bs6sbg3430tln" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="StyleBox" uid="uid://nlw5h3bdhv0j" path="res://assets/styles/normal_state_mode.tres" id="2_jyhfs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://2k5kwbj20vm8" path="res://scripts/block_save_manager.gd" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://ddajlju6garrl" path="res://scenes/warning.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://bkiblvqtqruc0" path="res://scenes/popup_panel.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://dhjj881q6xo77" path="res://scenes/node_properties.gd" id="9_eb6dy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbj1t"]
 content_margin_left = 2.0
@@ -103,6 +104,60 @@ border_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
 content_margin_left = 3.0
 content_margin_right = 3.0
 bg_color = Color(0.25490198, 0.25490198, 0.25490198, 0.48235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6deb"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq6so"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wyq8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fv21b"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.08235294, 0.08235294, 0.08235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.53333336, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trceg"]
 content_margin_left = 3.0
@@ -392,14 +447,120 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_sgp6g")
+script = ExtResource("9_eb6dy")
 
 [node name="Inside" type="VBoxContainer" parent="GUI/Content/right_panel/Properties"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="GUI/Content/right_panel/Properties/Inside"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Node Properties:"
+
+[node name="Position" type="Panel" parent="GUI/Content/right_panel/Properties/Inside"]
+custom_minimum_size = Vector2(0, 78.76)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y6deb")
+
+[node name="Position" type="VBoxContainer" parent="GUI/Content/right_panel/Properties/Inside/Position"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="GUI/Content/right_panel/Properties/Inside/Position/Position"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+theme_override_font_sizes/font_size = 13
+text = "Position:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Content/right_panel/Properties/Inside/Position/Position"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Content/right_panel/Properties/Inside/Position/Position/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+text = "x:"
+
+[node name="LineEdit" type="LineEdit" parent="GUI/Content/right_panel/Properties/Inside/Position/Position/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq6so")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_2wyq8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fv21b")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/Content/right_panel/Properties/Inside/Position/Position"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Content/right_panel/Properties/Inside/Position/Position/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+text = "y:"
+
+[node name="LineEdit" type="LineEdit" parent="GUI/Content/right_panel/Properties/Inside/Position/Position/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq6so")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_2wyq8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fv21b")
+
+[node name="Size" type="Panel" parent="GUI/Content/right_panel/Properties/Inside"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_y6deb")
+
+[node name="Position" type="VBoxContainer" parent="GUI/Content/right_panel/Properties/Inside/Size"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="GUI/Content/right_panel/Properties/Inside/Size/Position"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+theme_override_font_sizes/font_size = 13
+text = "Size:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/Content/right_panel/Properties/Inside/Size/Position"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Content/right_panel/Properties/Inside/Size/Position/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+text = "x:"
+
+[node name="LineEdit" type="LineEdit" parent="GUI/Content/right_panel/Properties/Inside/Size/Position/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq6so")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_2wyq8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fv21b")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GUI/Content/right_panel/Properties/Inside/Size/Position"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Content/right_panel/Properties/Inside/Size/Position/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ya4ey")
+text = "y:"
+
+[node name="LineEdit" type="LineEdit" parent="GUI/Content/right_panel/Properties/Inside/Size/Position/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq6so")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_2wyq8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_fv21b")
 
 [node name="SaveManager" type="Node" parent="."]
 script = ExtResource("7_o6xl0")

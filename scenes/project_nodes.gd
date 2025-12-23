@@ -9,9 +9,11 @@ extends Tree
 @onready var add_node_panel = $AddNode
 @onready var warn = main.find_child("warning", false)
 
+
 var next_id := 0
 var Node_setup := {}
 
+@onready var Panel_scene = preload("res://scenes/nodes/Panel.tscn")
 
 var node_icon = preload("res://assets/icons/EmptyNode.png")
 var CanvasLayer_icon = preload("res://assets/icons/CanvasLayer.png")
@@ -20,13 +22,22 @@ var Panel_icon = preload("res://assets/icons/Panel.svg")
 var focused_part = null
 
 func add_node_to_tree(selected_node_data : Dictionary):
+	var main_viewport = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().find_child("ViewPort").find_child("2D")
 	var new_item = create_item(get_selected())
 	new_item.set_text(0, selected_node_data["name"])
 	new_item.set_custom_font_size(0,12)
 	new_item.set_icon(0, selected_node_data["icon"])
 	new_item.set_icon_max_width(0,15)
 	new_item.set_metadata(0, selected_node_data["metadata"])
-
+	set_selected(new_item,0)
+	Global.current_working_sprite_node = new_item
+	if new_item.get_metadata(0) == "Panel":
+		var new_panel = Panel_scene.instantiate()
+		main_viewport.get_focused_sprite(Global.current_working_sprite).add_child(new_panel)
+	var properties_manager = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().find_child("right_panel").find_child("Properties")
+	properties_manager._display_properties()
+func change_panel_settings(selected_node : String):
+	pass
 
 func rename_selected_item():
 	var item = get_selected()
@@ -224,3 +235,7 @@ func _create():
 	root_item.set_icon(0,CanvasLayer_icon)
 	root_item.set_icon_max_width(0,15)
 	root_item.collapsed = false
+
+
+func _on_item_selected() -> void:
+	Global.current_working_sprite_node = get_selected()

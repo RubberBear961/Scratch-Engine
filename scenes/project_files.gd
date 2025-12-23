@@ -31,7 +31,14 @@ func open():
 		var parsed = JSON.parse_string(text)
 		if parsed == null:
 			parsed = {}
-		print(parsed)
+			parsed = {        
+			"0": {
+				"children": [],
+				"name": "CanvasLayer",
+				"parent": -1,
+				"type": "CanvasLayer"
+			}
+		}
 		sprite_viewport_handler.open_sprite(get_selected().get_text(0).get_basename())
 		sprite_node_handler.open_sprite(get_selected().get_text(0).get_basename())
 		sprite_node_handler.load_sprite_node_content(get_selected().get_text(0).get_basename(),parsed)

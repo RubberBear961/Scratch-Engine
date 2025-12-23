@@ -53,11 +53,6 @@ func _ready() -> void:
 	prepare_tree()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_cancel_pressed() -> void:
 	hide()
 

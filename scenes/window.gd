@@ -104,9 +104,6 @@ func create_workflow(path: String) -> bool:
 	print("[Fluppy] -> Project created successfully at: ", path)
 	return true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 
 # Presets Dynamic Focus =========================================================
 func _on_d_pressed() -> void:
@@ -223,11 +220,8 @@ func _on_flow_container_gui_input(event):
 		var mouse_pos = event.position
 		for child in $"../VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer".get_children():
 			if child.get_global_rect().has_point(mouse_pos):
-				var mouse_local: Vector2 = get_viewport().get_mouse_position()
-
-				var screen_mouse: Vector2 = mouse_local
-				Delete_menu.popup(Rect2i(screen_mouse, Delete_menu.size))
 				project_to_delete = child
+
 
 func prepare_delete_popup():
 	Delete_menu.clear()

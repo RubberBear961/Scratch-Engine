@@ -679,7 +679,8 @@ text = "No, it was a misclick SAVE ME!"
 
 [node name="Delete Menu" type="PopupMenu" parent="."]
 oversampling_override = 1.0
-size = Vector2i(14, 8)
+size = Vector2i(14, 2)
+visible = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_b1pjr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_71xtm")
 
@@ -690,6 +691,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_b1pjr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_71xtm")
 
 [connection signal="pressed" from="VBoxContainer/Panel/HBoxContainer/Create New" to="." method="_on_create_new_pressed"]
+[connection signal="gui_input" from="VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer" to="." method="_on_h_flow_container_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/ProjectsTab/VBoxContainer/ScrollContainer/HFlowContainer" to="Create new" method="_on_flow_container_gui_input"]
 [connection signal="close_requested" from="Create new" to="." method="_on_window_close_requested"]
 [connection signal="pressed" from="Create new/Control/Panel/VBoxContainer/Presets/HBoxContainer/2D" to="Create new" method="_on_d_pressed"]
